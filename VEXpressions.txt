@@ -1,0 +1,15 @@
+attribwrangle/snippet
+    AriHou - Iterate Edge Group (Vtx)
+    #include <ari_hedge_utils.h>
+
+    // This wrangle should be in vertices mode.
+    string edge_grp = chs("Edge_Group");
+    int hedge = vertexhedge(0, @vtxnum);
+
+    if(hedge_isprimary(0, hedge))
+    {
+        if(inhedgegroup(0, edge_grp, hedge))
+        {
+            
+        }
+    }

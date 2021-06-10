@@ -13,3 +13,17 @@ attribwrangle/snippet
             
         }
     }
+
+attribwrangle/snippet
+    AriHou - Hedge Walk (Prim)
+
+
+    //This wrangle should be in primitives mode.
+    #include <ari_hedge_utils.h>
+    int start_hedge = primhedge(0, @primnum);
+    int hedge = start_hedge;
+
+    do
+    {
+        hedge = hedge_next(0, hedge);
+    }while(hedge != start_hedge);

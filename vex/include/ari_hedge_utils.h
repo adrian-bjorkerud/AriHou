@@ -10,6 +10,12 @@ function vector hedge_dst_pos(const int geometry; const int hedge)
     return point(geometry, "P", hedge_dstpoint(geometry, hedge));
 }
 
+function vector hedge_pos_lerp(const int geometry; const int hedge; const float value)
+{
+    /* Returns a lerped position along the hedge src -> dst */
+    return lerp(hedge_src_pos(geometry, hedge), hedge_dst_pos(geometry, hedge), value);
+}
+
 function vector hedge_dir(const int geometry; const int hedge)
 {
     /* Returns a normalized vector pointing the wireing direction of this hedge. */

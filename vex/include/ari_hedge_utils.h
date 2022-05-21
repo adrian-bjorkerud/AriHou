@@ -22,6 +22,12 @@ function vector hedge_dir(const int geometry; const int hedge)
     return normalize(hedge_dst_pos(geometry, hedge) - hedge_src_pos(geometry, hedge));
 }
 
+function float hedge_length(const int geometry; const int hedge)
+{
+    /* Returns the length of this hedge. */
+    return distance(hedge_src_pos(geometry, hedge), hedge_dst_pos(geometry, hedge));
+}
+
 function vector hedge_prim_nrm(const int geometry; const int hedge)
 {
     /* Returns the normal of the input hedge's primitive. */

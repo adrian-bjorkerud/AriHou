@@ -5,7 +5,9 @@
  Note, that two definitions of the same element are not allowed in
  a single file. -->
 
-  <toolshelf name="arihou" label="AriHou"/>
+  <toolshelf name="arihou" label="AriHou">
+    <memberTool name="reload_modules"/>
+  </toolshelf>
 
   <tool name="reload_modules" label="Reload Modules" icon="hicon:/SVGIcons.index?BUTTONS_cook.svg">
     <script scriptType="python"><![CDATA[import os

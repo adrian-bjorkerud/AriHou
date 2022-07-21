@@ -1,5 +1,8 @@
 """ Utility functions for use in the AriHou Houdini Package. """
 
+from typing import Union
+
+from numpy import append
 import hou
 
 def menu_from_geo(geo: hou.Geometry, geo_types: tuple) -> list:
@@ -62,3 +65,41 @@ def menu_from_attrib(geo: hou.Geometry, geo_type: hou.geometryType, attrib_name:
             menu.append(val)
          
     return menu
+
+
+def menu_from_attrib_type(geo: hou.Geometry, geo_types: Union[hou.attribType, list, tuple]):
+    """Generates a Houdini menu style list from all attributes in all geometry types provided.
+
+    Args:
+        geo (hou.Geometry): The geometry to look for the Attributes on.
+        geo_types (Union[hou.geometryType, list, tuple]): Either a single geometry type or a list or tuple of multiple.
+    """
+    menu = []
+    if isinstance(geo_types, hou.EnumValue):
+        geo_types = [geo_types]
+        
+    def _append_attrib_type(attribs : list, add_sep: bool = True):
+        for attrib in attribs:
+            menu.append(attrib.name())
+            menu.append(attrib.name())
+        if add_sep:
+            menu.append("_separator_")
+            menu.append("_separator_")
+    
+    if hou.attribType.Point in geo_types:
+        _append_attrib_type(geo.pointAttribs(), geo_types[-1]!=hou.attribType.Point)
+        
+    if hou.attribType.Prim in geo_types:
+        _append_attrib_type(geo.primAttribs(), geo_types[-1]!=hou.attribType.Prim)
+        
+    if hou.attribType.Vertex in geo_types:
+        _append_attrib_type(geo.vertexAttribs(), geo_types[-1]!=hou.attribType.Vertex)
+        
+    if hou.attribType.Global in geo_types:
+        _append_attrib_type(geo.globalAttribs(), geo_types[-1]!=hou.attribType.Global)
+        
+    return menu
+        
+        
+    
+    

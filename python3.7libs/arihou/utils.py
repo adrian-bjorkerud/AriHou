@@ -2,7 +2,6 @@
 
 from typing import Union
 
-from numpy import append
 import hou
 
 def menu_from_geo(geo: hou.Geometry, geo_types: tuple) -> list:
